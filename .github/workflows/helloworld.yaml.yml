@@ -1,0 +1,19 @@
+name: Run Hello World and LS
+
+on:
+  workflow_call:
+
+jobs:
+  run-inline-script:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 1. Checkout
+        uses: actions/checkout@v4
+
+      - name: 2. Exce Hola Mundo y LS
+        run: |
+          echo "Hola Mundo"
+          pwd
+          ls -lah
+          echo "Fin del Script"
+          echo "Pipiline de Test"

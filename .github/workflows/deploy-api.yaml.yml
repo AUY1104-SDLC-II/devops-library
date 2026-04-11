@@ -1,0 +1,24 @@
+name: Deploy API to Docker Hub
+
+on:
+  workflow_call:                            # Permitir ejecución de pipeline cuando sea llamado por otros repositorios
+    secrets:
+      DOCKER_USERNAME:
+        required: true
+      DOCKER_PASSWORD:
+        required: true
+  workflow_dispatch:                        # Permitir ejecución manual desde Github UI
+
+jobs:
+  run-inline-script:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 1. Checkout                       # Checkout del Código
+        uses: actions/checkout@v4
+
+      - name: 2. Configure Docker Hub Credentials  #Credenciales de Docker Hub
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+
