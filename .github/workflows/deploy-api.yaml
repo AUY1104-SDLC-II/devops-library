@@ -21,13 +21,12 @@ on:
       DOCKER_PASSWORD:
         required: true
 
-
+# Validación
 jobs:
   deps-and-test:
     runs-on: ubuntu-latest
     permissions:
       contents: read
-      packages: write
     steps:
       - name: 1. Checkout de código fuente
         uses: actions/checkout@v4
@@ -37,6 +36,7 @@ jobs:
 
       - name: 3. Validación de Calidad (Test)
         run: npm test
+
   docker-build_image:
     needs: deps-and-test
     runs-on: ubuntu-latest
@@ -46,7 +46,7 @@ jobs:
 
       - name: 2. Construcción de Imagen Docker (Build)
         run: |
-          docker build -t ${{ secrets.DOCKER_USERNAME }}/${{ inputs.image_name   }}:${{ inputs.image_tag}}
+          docker build -t ${{ secrets.DOCKER_USERNAME }}/${{ inputs.image_name   }}:${{ inputs.image_tag}} .
 
       - name: 3. Login to Docker Hub
         if: ${{  inputs.push_image == true }}
