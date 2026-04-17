@@ -12,6 +12,7 @@ on:
         required: true
         type: string
       push_image:
+        description: Controla si la imagen se sube a Docker Hub (True solo en Release)
         required: true
         type: boolean
     secrets:
@@ -20,16 +21,6 @@ on:
       DOCKER_PASSWORD:
         required: true
 
-  workflow_dispatch:
-    inputs:
-      image_name:
-        description: Nombre corto de la imagen (ej. mi-api-academica)
-        required: true
-        type: string
-      image_tag:
-        description: Etiqueta de esta versión (ej. v1.0.0)
-        required: true
-        type: string
 
 jobs:
   deps-and-test:
