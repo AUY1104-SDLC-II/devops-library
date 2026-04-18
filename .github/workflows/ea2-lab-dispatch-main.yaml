@@ -35,7 +35,7 @@ on:
 
 jobs:
   delegar-receta-ea2:
-    uses: AUY1104-SDLC-II/devops-library/.github/workflows/deploy-api.yaml@feat/eks-implementation
+    uses: AUY1104-SDLC-II/devops-library/.github/workflows/ea2-provision-k8s-sandbox.yaml@feat/eks-implementation
     with:
       aws_region: ${{ inputs.aws_region }}
       instance_type: ${{ inputs.instance_type }}
