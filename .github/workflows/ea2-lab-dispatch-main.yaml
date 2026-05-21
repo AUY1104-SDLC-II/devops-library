@@ -43,7 +43,7 @@ on:
 
 jobs:
   delegar-receta-ea2:
-    uses: asanchezo-duoc/AUY1104-SharedWorkflows/.github/workflows/ea2-provision-k8s-sandbox.yaml@EA2
+    uses: asanchezo-duoc/AUY1104-SharedWorkflows/.github/workflows/ea2-provision-k8s-sandbox.yaml@main
     with:
       aws_region: ${{ inputs.aws_region }}
       instance_type: ${{ inputs.instance_type }}
