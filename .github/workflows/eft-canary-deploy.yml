@@ -12,6 +12,11 @@ on:
         description: IP Pública de la instancia EC2 con k3s
         required: true
         type: string
+      image_name:
+        description: Nombre del repositorio de imagen Docker
+        required: false
+        default: auy1104-app
+        type: string
     secrets:
       DOCKER_USERNAME:
         required: true
@@ -24,7 +29,7 @@ jobs:
     env:
       SERVER_IP: ${{ inputs.server_ip }}
       STABLE_IMAGE: ${{ inputs.stable_image }}
-      CANARY_IMAGE: ${{ secrets.DOCKER_USERNAME }}/auy1104-app:${{ github.sha }}
+      CANARY_IMAGE: ${{ secrets.DOCKER_USERNAME }}/${{ inputs.image_name }}:${{ github.sha }}
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
