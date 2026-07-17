@@ -4,7 +4,7 @@ Esta guía describe cómo usar **kubectl en tu PC** contra la instancia EC2 que 
 
 ## Contexto en este repositorio
 
-- Workflow: [`.github/workflows/ea2-provision-k8s-sandbox.yaml`](../../.github/workflows/ea2-provision-k8s-sandbox.yaml).
+- Workflow: [`.github/workflows/ea2-provision-k8s-sandbox.yaml`](../../.github/workflows/provision-k8s-infra.yaml).
 - Tras instalar **k3s**, el archivo de configuración en el servidor es:
   - **`/etc/rancher/k3s/k3s.yaml`**
 - El instalador usa `INSTALL_K3S_EXEC="--write-kubeconfig-mode 644"` para que el archivo sea legible con `sudo cat` (ver job en el workflow).
