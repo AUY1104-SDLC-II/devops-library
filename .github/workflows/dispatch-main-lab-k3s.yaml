@@ -43,8 +43,8 @@ on:
 
 jobs:
   delegar-receta-ea2:
-    uses: AUY1104-SDLC-II/devops-library/.github/workflows/provision-k8s-infra@main
-    uses: AUY1104-SDLC-II/devops-library/.github/workflows/provision-k8s-infra@feat/eks-implementation
+    uses: AUY1104-SDLC-II/devops-library/.github/workflows/provision-k8s-infra.yaml@main
+    uses: AUY1104-SDLC-II/devops-library/.github/workflows/provision-k8s-infra.yaml@feat/eks-implementation
     with:
       aws_region: ${{ inputs.aws_region }}
       instance_type: ${{ inputs.instance_type }}
