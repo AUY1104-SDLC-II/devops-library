@@ -1,6 +1,5 @@
 # ─────────────────────────────────────────────────────────────
 # EA2 · Laboratorio K8s en EC2 (Terraform + SSH)
-# Rama sugerida: EA2 (no mergear a main hasta liberar a alumnos)
 #
 # - workflow_call: lo invoca el repo del alumno con sus secretos AWS + SSH.
 # - workflow_dispatch: prueba desde este mismo repo (Actions → Run workflow).
