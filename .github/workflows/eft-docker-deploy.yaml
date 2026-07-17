@@ -3,6 +3,10 @@ name: EFT - Deploy and Push Docker
 
 on:
   workflow_call:
+    image_name:
+      description: Nombre del repositorio Docker
+      required: false
+      default: auy1104-app
     secrets:
       DOCKER_USERNAME:
         required: true
@@ -36,4 +40,4 @@ jobs:
           context: .
           push: true
           tags: |
-            ${{ secrets.DOCKER_USERNAME }}/auy1104-app:${{ github.sha }}
+            ${{ secrets.DOCKER_USERNAME }}/${{ inputs.image_name }}:${{ github.sha }}
