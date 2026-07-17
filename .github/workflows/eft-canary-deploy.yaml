@@ -55,11 +55,13 @@ jobs:
             k8s/canary-namespace.yaml \
             > /tmp/canary-namespace.yaml
           
-          sed "s|STABLE_IMAGE_PLACEHOLDER|${STABLE_IMAGE}|g" \
+          sed -e "s|STABLE_IMAGE_PLACEHOLDER|${STABLE_IMAGE}|g" \
+            -e "s|canary-orders|${NAMESPACE}|g" \
             k8s/canary-stable-deployment.yaml \
             > /tmp/canary-stable-deployment.yaml
           
-          sed "s|CANARY_IMAGE_PLACEHOLDER|${CANARY_IMAGE}|g" \
+          sed -e "s|CANARY_IMAGE_PLACEHOLDER|${CANARY_IMAGE}|g" \
+            -e "s|canary-orders|${NAMESPACE}|g" \
             k8s/canary-deployment.yaml \
             > /tmp/canary-deployment.yaml
           
@@ -78,7 +80,9 @@ jobs:
 
       - name: Deploy Canary stack to K3s
         run: |
-          ssh -o StrictHostKeyChecking=accept-new ubuntu@${SERVER_IP} << 'EOF'
+          ssh -o StrictHostKeyChecking=accept-new \
+            ubuntu@${SERVER_IP} \
+            "NAMESPACE='${NAMESPACE}' bash -s" << 'EOF'
           set -e
           #Implementar manifiestos
           sudo k3s kubectl apply -f /tmp/canary-namespace.yaml
