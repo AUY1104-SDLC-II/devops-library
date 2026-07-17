@@ -3,10 +3,12 @@ name: EFT - Deploy and Push Docker
 
 on:
   workflow_call:
-    image_name:
-      description: Nombre del repositorio Docker
-      required: false
-      default: auy1104-app
+    inputs:
+      image_name:
+        description: Nombre del repositorio Docker
+        required: false
+        default: auy1104-app
+        type: string
     secrets:
       DOCKER_USERNAME:
         required: true
